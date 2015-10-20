@@ -1,0 +1,6 @@
+location /go/ {
+    rewrite                         ^/go/aliyun "http://s.click.taobao.com/t?e=m%3D2%26s%3DnXq8TZ%2BtG3wcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAgSlRO5VG%2BfsumD%2Bcnjvyyo476VW4bppT1RKy7gZ2yRAsX0Y1KC8ZrTwrzxTJHBUbzDVuRn8ddiDsEVVC24eqozcHtRpEUy6RHVyxRO0gvF4QxJtmCgOmCLXl8Q7TEjBF%2BX11FSyvDCnQiv%2BJKjlPObGDmntuH4VtA%3D%3D";
+    rewrite                         ^/go/digitalocean "https://www.digitalocean.com/?refcode=e4c1d44c3ba0";
+    rewrite                         ^/go/qiniu "https://portal.qiniu.com/signup?code=3ljlduc9le6oi";
+    rewrite                         ^/go/upyun "https://www.upyun.com";
+}
