@@ -1,0 +1,6 @@
+ location   ~* \.(html|htm|xml|rss|atom|txt|xhtml)$ {
+    expires 1d;
+ }
+ location   ~* \.(css|gif|jpeg|jpg|js|png|ico|bmp|svg|doc|pdf|mp3|ogg|mp4|mpeg|webm|eot|ttf|woff)$ {
+    expires 3d;
+ }

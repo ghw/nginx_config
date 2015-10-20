@@ -1,0 +1,9 @@
+# Based on: http://eng.eelcowesemann.nl/linux-unix-android/nginx/nginx-blocking/
+if ($http_user_agent ~ "Windows 95|Windows 98|biz360.com|xpymep|TurnitinBot|sindice|Purebot|libwww-perl") {
+    return 403;
+    break;
+}
+# With the ~* I perform a case-insensitive match on the full referrer string. If either viagra, cialis or levitra appears in the referrer, the GET request will be forbidden.
+if ($http_referer ~* (viagra|cialis|levitra) ) {
+    return 403;
+}

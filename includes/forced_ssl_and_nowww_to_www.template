@@ -1,0 +1,10 @@
+set     $rewriterule a;
+if      ($scheme = https) {
+set     $rewriterule "${rewriterule}1";
+}
+if      ($host ~* ^www\.) {
+set     $rewriterule "${rewriterule}2";
+}
+if      ($rewriterule != "a12") {
+return  301 https://www.$domain$request_uri;
+}

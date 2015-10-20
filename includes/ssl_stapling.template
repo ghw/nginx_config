@@ -1,0 +1,6 @@
+# OCSP Stapling
+# See https://raymii.org/s/tutorials/OCSP_Stapling_on_nginx.html
+ssl_stapling            on;
+ssl_stapling_verify     on;
+resolver                223.5.5.5 223.6.6.6 [2001:4860:4860::8888]:5353 [2001:4860:4860::8844]:5353 valid=3600s;
+resolver_timeout        5s;
