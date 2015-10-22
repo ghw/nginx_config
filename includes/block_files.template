@@ -1,3 +1,6 @@
 location    ~ /\. {
     deny    all;
-}
+    }
+location    ~* (?:\.(?:bak|conf|log|sql|)|~)$ {
+    deny    all;
+    }
