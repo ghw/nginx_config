@@ -1,0 +1,8 @@
+server {
+    server_name                 duoshuo.hexoer.tk http.hexoer.tk;
+    include                     includes/header_add.template;
+    include                     includes/headers_set_more.template;
+    include                     includes/listen_full.template;
+    include                     includes/block_files.template;
+    include                     includes/duoshuocomment.template;
+}
