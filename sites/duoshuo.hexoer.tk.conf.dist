@@ -5,4 +5,6 @@ server {
     include                     includes/listen_full.template;
     include                     includes/block_files.template;
     include                     includes/duoshuocomment.template;
+    access_log                  /usr/home/wwwroot/logs/duoshuo.hexoer.tk.access.log;
+    error_log                   /usr/home/wwwroot/logs/duoshuo.hexoer.tk.error.log;
 }

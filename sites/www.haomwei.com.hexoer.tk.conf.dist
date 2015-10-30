@@ -1,5 +1,5 @@
 server {
-    server_name                 www.gehaowu.com.hexoer.tk;
+    server_name                 www.haomwei.com.hexoer.tk;
     include                     includes/listen_full.template;
     include                     includes/header_add.template;
     include                     includes/headers_set_more.template;
@@ -11,10 +11,10 @@ server {
             return              404;
             }
         }
-    root                        /usr/home/wwwroot/www.gehaowu.com;
+    root                        /usr/home/wwwroot/www.haomwei.com;
     error_page                  500 502 503 504 404 403 https://www.gehaowu.com/404.html;
     include                     includes/block_files.template;
     include                     includes/expires.template;
-    access_log                  /usr/home/wwwroot/logs/www.gehaowu.com.hexoer.tk.access.log;
-    error_log                   /usr/home/wwwroot/logs/www.gehaowu.com.hexoer.tk.error.log;
+    access_log                  /usr/home/wwwroot/logs/www.haomwei.com.hexoer.tk.access.log;
+    error_log                   /usr/home/wwwroot/logs/www.haomwei.com.hexoer.tk.error.log;
 }

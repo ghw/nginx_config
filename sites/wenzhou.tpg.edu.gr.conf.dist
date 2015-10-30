@@ -3,10 +3,10 @@ server {
     include                     includes/listen_full.template;
     include                     includes/header_add.template;
     include                     includes/headers_set_more.template;
-    ssl_certificate             $wwwroot/keys/wenzhou.tpg.edu.gr.crt;
-    ssl_certificate_key         $wwwroot/keys/wenzhou.tpg.edu.gr.key;
-    ssl_trusted_certificate     $wwwroot/keys/wosign_ssl_trusted_certificate.crt;
-    ssl_dhparam                 $wwwroot/keys/dhparam.pem;
+    ssl_certificate             keys/wenzhou.tpg.edu.gr.crt;
+    ssl_certificate_key         keys/wenzhou.tpg.edu.gr.key;
+    ssl_trusted_certificate     keys/wosign_ssl_trusted_certificate.crt;
+    ssl_dhparam                 keys/dhparam.pem;
     ssl_ecdh_curve              secp384r1;
     include                     includes/ssl.template;
     include                     includes/ssl_stapling.template;
@@ -22,6 +22,6 @@ server {
     }
     include                     includes/block_files.template;
     include                     includes/expires.template;
-    access_log                  $wwwroot/logs/wenzhou.tpg.edu.gr.access.log;
-    error_log                   $wwwroot/logs/wenzhou.tpg.edu.gr.error.log;
+    access_log                  /usr/home/wwwroot/logs/wenzhou.tpg.edu.gr.access.log;
+    error_log                   /usr/home/wwwroot/logs/wenzhou.tpg.edu.gr.error.log;
 }
