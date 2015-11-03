@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
 .swp
+.bak
 keys/*.key
 keys/*.pem
 logs/
