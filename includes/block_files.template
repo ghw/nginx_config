@@ -1,6 +1,6 @@
-location    ~ /\. {
+location    ~*  .(sql|backup)$ {
     deny    all;
-    }
-location    ~* (?:\.(?:bak|conf|log|sql|)|~)$ {
+}
+location    ~   ^/(.git|.svn|.bak|.backup|bak|backup)/ {
     deny    all;
-    }
+}

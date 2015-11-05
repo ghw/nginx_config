@@ -1,0 +1,3 @@
+location                ^~ /.well-known/acme-challenge/ {
+    more_set_headers    "Content-Type: application/jose+json";
+}
