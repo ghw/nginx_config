@@ -1,3 +1,4 @@
 location                ^~ /.well-known/acme-challenge/ {
     more_set_headers    "Content-Type: application/jose+json";
+    root                /etc/letsencrypt/webrootauth/.well-known/acme-challenge;
 }
