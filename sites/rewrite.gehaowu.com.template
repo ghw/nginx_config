@@ -4,4 +4,5 @@ location /go/ {
     rewrite                         ^/go/namesilo "http://www.namesilo.com/?rid=e375a65qo";
     rewrite                         ^/go/qiniu "https://portal.qiniu.com/signup?code=3lffq0m13hg0i";
     rewrite                         ^/go/zhujike "https://i.zhujike.com/flag/3820";
+    break;
 }

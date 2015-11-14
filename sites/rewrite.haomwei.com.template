@@ -3,4 +3,5 @@ location /go/ {
     rewrite                         ^/go/digitalocean "https://www.digitalocean.com/?refcode=e4c1d44c3ba0";
     rewrite                         ^/go/qiniu "https://portal.qiniu.com/signup?code=3ljlduc9le6oi";
     rewrite                         ^/go/upyun "https://www.upyun.com";
+    break;
 }
