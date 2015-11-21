@@ -1,8 +1,3 @@
 location            ~ /.well-known/acme-challenge/(.*) {
     default_type    text/plain;
 }
-#location                ~ /.well-known {
-#    location            ~ /.well-known/acme-challenge/(.*) {
-#    more_set_headers    "Content-Type: application/jose+json";
-#    }
-#}
