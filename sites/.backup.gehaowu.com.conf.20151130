@@ -1,0 +1,126 @@
+server {
+    server_name                 gehaowu.com www.gehaowu.com;
+    listen                      80;
+    listen                      [::]:80;
+    add_header                  Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+    add_header                  X-Frame-Options 'DENY';
+    add_header                  X-Content-Type-Options 'nosniff';
+    add_header                  X-XSS-Protection '1; mode=block';
+    #add_header                  Set-Cookie "HttpOnly";
+    #add_header                  Set-Cookie "Secure";
+    more_set_headers            'Server: Microsoft-IIS/7.77';
+    add_header                  Public-Key-Pins 'pin-sha256="OqjF+KBBon6XbAYjlEHBepItIJ78raVIWWgORTCZNv0="; pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; pin-sha256="BzhXE2LFJXOfZUlJwKxBatU8uNMaEbNfmrtHmWXqdhw="; max-age=129600; includeSubDomains; report-uri="https://report-uri.io/report/fed937a11a268e8be35a12db8a648233"';
+    add_header                  Public-Key-Pins-Report-Only 'pin-sha256="OqjF+KBBon6XbAYjlEHBepItIJ78raVIWWgORTCZNv0="; pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; pin-sha256="BzhXE2LFJXOfZUlJwKxBatU8uNMaEbNfmrtHmWXqdhw="; max-age=129600; includeSubDomains; report-uri="https://report-uri.io/report/fed937a11a268e8be35a12db8a648233"';
+    return                      301 https://www.gehaowu.com$request_uri;
+    break;
+    access_log                  /usr/home/wwwroot/logs/gehaowu.com.http.access.log;
+    error_log                   /usr/home/wwwroot/logs/gehaowu.com.http.error.log;
+}
+server {
+    server_name                 gehaowu.com www.gehaowu.com;
+    listen                      443 ssl http2;
+    listen                      [::]:443 ssl http2;
+    include                     sites/rewrite.gehaowu.com.template;
+    add_header                  Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+    add_header                  X-Frame-Options 'DENY';
+    add_header                  X-Content-Type-Options 'nosniff';
+    add_header                  X-XSS-Protection '1; mode=block';
+    add_header                  Cache-Control 'no-siteapp';
+    #add_header                  Set-Cookie "HttpOnly";
+    #add_header                  Set-Cookie "Secure";
+    more_set_headers            'Server: Microsoft-IIS/7.77';
+    add_header                  Public-Key-Pins 'pin-sha256="OqjF+KBBon6XbAYjlEHBepItIJ78raVIWWgORTCZNv0="; pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; pin-sha256="BzhXE2LFJXOfZUlJwKxBatU8uNMaEbNfmrtHmWXqdhw="; max-age=129600; includeSubDomains; report-uri="https://report-uri.io/report/fed937a11a268e8be35a12db8a648233"';
+    add_header                  Public-Key-Pins-Report-Only 'pin-sha256="OqjF+KBBon6XbAYjlEHBepItIJ78raVIWWgORTCZNv0="; pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; pin-sha256="BzhXE2LFJXOfZUlJwKxBatU8uNMaEbNfmrtHmWXqdhw="; max-age=129600; includeSubDomains; report-uri="https://report-uri.io/report/fed937a11a268e8be35a12db8a648233"';
+    ssl_certificate             /etc/letsencrypt/live/gehaowu.com/fullchain.pem;
+    ssl_certificate_key         /etc/letsencrypt/live/gehaowu.com/privkey.pem;
+    ssl_trusted_certificate     /etc/letsencrypt/live/gehaowu.com/chain.pem;
+    ssl_ct_static_scts          /etc/letsencrypt/live/gehaowu.com/scts;
+    ssl_ct on;
+    ssl_dhparam                 keys/dhparam.pem;
+    ssl_ecdh_curve              secp384r1;
+    ssl_session_cache           shared:SSL:2m;
+    ssl_session_timeout         12h;
+    ssl_session_tickets         on;
+    ssl_prefer_server_ciphers   on;
+    ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers                 ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK;
+    ssl_stapling                on;
+    ssl_stapling_verify         on;
+    include                     includes/resolverserver.template;
+    resolver_timeout            5s;
+    if                          ($host !~* ^www.) {
+        return                  301 https://www.gehaowu.com$request_uri;
+        break;
+    }
+    error_page                  404 /404.html;
+    error_page                  403 /403.html;
+    error_page                  500 502 503 504 /50x.html;
+    access_log                  /usr/home/wwwroot/logs/gehaowu.com.access.log;
+    error_log                   /usr/home/wwwroot/logs/gehaowu.com.error.log;
+    index                       index.html index.htm;
+    root                        /usr/home/wwwroot/www.gehaowu.com;
+    location                    ~* .(sql|backup)$ {
+        deny                    all;
+    }
+    location                    ~ ^/(.git|.svn|.bak|.backup|bak|backup)/ {
+        deny                    all;
+    }
+    location                    ~ /.well-known/acme-challenge/(.*) {
+        default_type            text/plain;
+    }
+    location                    ^~ /blog/ {
+        proxy_cache             STATIC;
+        proxy_cache_valid       200 30m;
+        proxy_cache_valid       404 1m;
+        proxy_ignore_headers    X-Accel-Expires Expires Cache-Control;
+        proxy_ignore_headers    Set-Cookie;
+        proxy_hide_header       X-Accel-Expires;
+        proxy_hide_header       Expires;
+        proxy_hide_header       Cache-Control;
+        proxy_hide_header       Vary;
+        proxy_hide_header       Strict-Transport-Security;
+        proxy_hide_header       Public-Key-Pins;
+        proxy_hide_header       Public-Key-Pins-Report-Only;
+        proxy_hide_header       Set-Cookie;
+        proxy_hide_header       X-powered-by;
+        proxy_hide_header       X-XSS-Protection;
+        proxy_hide_header       X-Content-Type-Options;
+        proxy_hide_header       X-Frame-Options;
+        more_set_headers        'X-AspNetMvc-Version: 7.0';
+        more_set_headers        'X-AspNet-Version: 7.0.0519';
+        more_set_headers        'X-Powered-By: ASP.NET';
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+        proxy_set_header        Host www.gehaowu.com;
+        proxy_pass              http://192.168.7.1:2368/blog/;
+        #expires                 10m;
+    }
+    #location                    ~ ^/blog/(?:ghost|signout) {
+    #    proxy_set_header        X-Real-IP $remote_addr;
+    #    proxy_set_header        Host www.gehaowu.com;
+    #    proxy_pass              http://192.168.7.1:2368/blog/;
+    #    add_header              Cache-Control "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0";
+    #    proxy_set_header        X-Forwarded-Proto https;
+    #}
+    location                    ^~ /netstat/aliyun/ {
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        Host www.gehaowu.com;
+        proxy_pass              https://aliyunhost.daemon.xin/vnstat/;
+    }
+    location                    ^~ /netstat/digital/ {
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        Host www.gehaowu.com;
+        proxy_pass              https://digitalhost.daemon.xin/vnstat/;
+    }
+    location                    ~* \.(html|htm|xml|rss|atom|txt|xhtml)$ {
+        expires                 1d;
+    }
+    location                    ~* \.(css|gif|jpeg|jpg|js|png|ico|bmp|svg|doc|pdf|mp3|ogg|mp4|mpeg|webm|eot|ttf|woff)$ {
+        expires                 3d;
+    }
+}
