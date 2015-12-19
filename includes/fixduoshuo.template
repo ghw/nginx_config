@@ -1,0 +1,17 @@
+location                    ^~ /thirdparty/static.duoshuo.com/ {
+    proxy_cache             STATIC;
+    proxy_cache_valid       200 30m;
+    proxy_cache_valid       404 1m;
+    sub_filter              'return e.avatar_url||rt.data.default_avatar_url' 'if(e.avatar_url){e.avatar_url=e.avatar_url.replace(/^http\:\/\//,"https://dn-ds-img.qbox.me/")}else{rt.data.default_avatar_url=rt.data.default_avatar_url.replace(/^http\:\/\//,"https://dn-ds-img.qbox.me/")};return e.avatar_url||rt.data.default_avatar_url';
+    sub_filter              'http://img.t.sinajs.cn/' 'https://dn-ds-img.qbox.me/img.t.sinajs.cn/';
+    sub_filter              'r=s.author;' 'r=s.author;s.message = s.message.replace(/src=\"http\:\/\//,\'src=\"https://dn-ds-img.qbox.me/\');';
+    sub_filter_once         on;
+    sub_filter_types        *;
+    proxy_set_header        Accept-Encoding "";
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header        X-Forwarded-Proto $scheme;
+    proxy_set_header        X-Real-IP $remote_addr;
+    proxy_set_header        Host $proxy_host;
+    proxy_pass              https://static.duoshuo.com/;
+    }
+
